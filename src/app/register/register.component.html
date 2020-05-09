@@ -1,0 +1,38 @@
+﻿<div class="col-md-6 offset-md-3 mt-5">
+  <div class="card">
+  <h4 class="card-header">Register</h4>
+    <div class="card-body">
+      <form name="form" (ngSubmit)="f.form.valid && register()" #f="ngForm" novalidate>
+          <div class="form-group">
+              <label for="firstName">First Name</label>
+              <input type="text" class="form-control" name="firstName" [ngClass]="{ 'is-invalid': f.submitted && !firstName.valid }"
+                 [(ngModel)]="model.firstName" #firstName="ngModel" required />
+              <div *ngIf="f.submitted && !firstName.valid" class="invalid-feedback">First Name is required</div>
+          </div>
+          <div class="form-group">
+              <label for="lastName">Last Name</label>
+              <input type="text" class="form-control" name="lastName" [ngClass]="{ 'is-invalid': f.submitted && !lastName.valid }"
+                  [(ngModel)]="model.lastName" #lastName="ngModel" required />
+              <div *ngIf="f.submitted && !lastName.valid" class="invalid-feedback">Last Name is required</div>
+          </div>
+          <div class="form-group">
+              <label for="username">Username</label>
+              <input type="text" class="form-control" name="username" [ngClass]="{ 'is-invalid': f.submitted && !username.valid }"
+              [(ngModel)]="model.username" #username="ngModel" required />
+              <div *ngIf="f.submitted && !username.valid" class="invalid-feedback">Username is required</div>
+          </div>
+          <div class="form-group">
+              <label for="password">Password</label>
+              <input type="password" class="form-control"  [ngClass]="{ 'is-invalid': f.submitted && !password.valid }"
+                    name="password" [(ngModel)]="model.password" #password="ngModel" required />
+              <div *ngIf="f.submitted && !password.valid" class="invalid-feedback">Passsword is required</div>
+          </div>
+          <div class="form-group">
+              <button [disabled]="loading" class="btn btn-primary">Register</button>
+              <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+              <a [routerLink]="['/login']" class="btn btn-link">Cancel</a>
+          </div>
+      </form>
+    </div>
+  </div>
+</div>
